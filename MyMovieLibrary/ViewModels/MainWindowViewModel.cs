@@ -52,6 +52,13 @@ namespace MyMovieLibrary.ViewModels
                 },
                 new NavigationItem()
                 {
+                    Content = "Home",
+                    PageTag = "home",
+                    Icon = SymbolRegular.Home24,
+                    PageType = typeof(Views.Pages.HomePage)
+                },
+                new NavigationItem()
+                {
                     Content = "Library",
                     PageTag = "library",
                     Icon = SymbolRegular.Library24,

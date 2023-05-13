@@ -51,6 +51,8 @@ namespace MyMovieLibrary
                 services.AddScoped<ViewModels.DashboardViewModel>();
                 services.AddScoped<Views.Pages.DataPage>();
                 services.AddScoped<ViewModels.DataViewModel>();
+                services.AddScoped<Views.Pages.HomePage>();
+                services.AddScoped<ViewModels.HomeViewModel>();
                 services.AddScoped<Views.Pages.LibraryPage>();
                 services.AddScoped<ViewModels.LibraryViewModel>();
                 services.AddScoped<Views.Pages.SettingsPage>();
