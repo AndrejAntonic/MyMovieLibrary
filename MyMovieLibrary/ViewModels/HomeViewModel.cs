@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MyMovieLibrary.Models;
+using MyMovieLibrary.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace MyMovieLibrary.ViewModels
     public partial class HomeViewModel : ObservableObject, INavigationAware
     {
         private bool _isInitialized = false;
+        TMDB tmdb = new TMDB(); 
 
         [ObservableProperty]
         private IEnumerable<DataMovies> _movies;
@@ -20,29 +22,20 @@ namespace MyMovieLibrary.ViewModels
         {
         }
 
-        public void OnNavigatedTo()
+        async public void OnNavigatedTo()
         {
             if (!_isInitialized)
                 InitializeViewModel();
-
         }
 
-        private void InitializeViewModel()
+        private async void InitializeViewModel()
         {
             var moviesCollection = new List<DataMovies>();
 
-            moviesCollection.Add(new DataMovies
-            {
-                Original_title = "Avatar",
-                Poster_path = "../../Assets/jRXYjXNq0Cs2TcJjLkki24MLp7u.jpg"
-            });
-            moviesCollection.Add(new DataMovies
-            {
-                Original_title = "Asd",
-                Poster_path = "../../Assets/jRXYjXNq0Cs2TcJjLkki24MLp7u.jpg"
-            });
+            var moviesTrendingWeek = await tmdb.GetTrendingMoviesWeek();
 
-            Movies = moviesCollection;
+            if(moviesTrendingWeek != null)
+                Movies = moviesTrendingWeek;
 
             _isInitialized = true;
         }

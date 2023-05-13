@@ -20,7 +20,7 @@
         <ui:VirtualizingItemsControl
             Foreground="{DynamicResource TextFillColorSecondaryBrush}"
             ItemsSource="{Binding ViewModel.Movies, Mode=OneWay}"
-            VirtualizingPanel.CacheLengthUnit="Item">
+            VirtualizingPanel.CacheLengthUnit="Page">
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type models:DataMovies}">
                     <Grid>
@@ -35,8 +35,6 @@
                             Height="195"
                             Margin="2"
                             Padding="0"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
                             Appearance="Secondary"
                             FontSize="25">
                             <ui:Button.Background>
