@@ -40,7 +40,7 @@
                             Appearance="Secondary"
                             FontSize="25">
                             <ui:Button.Background>
-                                <ImageBrush ImageSource="{Binding Image}"/>
+                                <ImageBrush ImageSource="{Binding Poster_path}"/>
                             </ui:Button.Background>
                         </ui:Button>
                         <TextBlock Grid.Row="1"

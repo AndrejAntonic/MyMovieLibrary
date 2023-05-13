@@ -36,7 +36,12 @@ namespace MyMovieLibrary.ViewModels
             moviesCollection.Add(new DataMovies
             {
                 Original_title = "Avatar",
-                Image = "../../Assets/jRXYjXNq0Cs2TcJjLkki24MLp7u.jpg"
+                Poster_path = "../../Assets/jRXYjXNq0Cs2TcJjLkki24MLp7u.jpg"
+            });
+            moviesCollection.Add(new DataMovies
+            {
+                Original_title = "Asd",
+                Poster_path = "../../Assets/jRXYjXNq0Cs2TcJjLkki24MLp7u.jpg"
             });
 
             Movies = moviesCollection;

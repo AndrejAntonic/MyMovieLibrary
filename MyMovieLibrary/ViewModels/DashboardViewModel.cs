@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.Windows;
 using Wpf.Ui.Common.Interfaces;
 
 namespace MyMovieLibrary.ViewModels
