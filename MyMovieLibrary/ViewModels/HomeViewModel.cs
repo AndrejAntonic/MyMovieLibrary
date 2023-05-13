@@ -22,7 +22,7 @@ namespace MyMovieLibrary.ViewModels
         {
         }
 
-        async public void OnNavigatedTo()
+        public void OnNavigatedTo()
         {
             if (!_isInitialized)
                 InitializeViewModel();

@@ -62,6 +62,43 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
+                    <Grid>
+                        <TextBox x:Name="SearchBox" Grid.Row="0" Height="30" Width="350" Margin="5" BorderThickness="0" Background="#f2f2f2"
+                                    BorderBrush="Gray" Foreground="Black" FontSize="13" Padding="4,5,0,0">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="12"/>
+                                </Style>
+                            </TextBox.Resources>
+                            <TextBox.Style>
+                                <Style TargetType="{x:Type TextBox}">
+                                    <Setter Property="Foreground" Value="DarkGray" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsFocused" Value="True">
+                                            <Setter Property="Foreground" Value="Black" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                        <TextBlock IsHitTestVisible="False" Text="Search..." VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                    Margin="10,0,0,0" Foreground="DarkGray" Height="20" Width="350" Grid.Row="0">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Cursor" Value="IBeam" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+
                     <Frame x:Name="RootFrame" Grid.Row="1" />
                     <ui:Breadcrumb
                         Grid.Row="0"
