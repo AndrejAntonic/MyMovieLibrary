@@ -24,17 +24,16 @@
   <ItemGroup>
     <None Remove="Assets\applicationIcon-1024.png" />
     <None Remove="Assets\applicationIcon-256.png" />
+    <None Remove="Assets\Fonts\Poppins-Regular.ttf" />
+    <None Remove="Assets\Fonts\poppins.ttf" />
     <None Remove="Assets\jRXYjXNq0Cs2TcJjLkki24MLp7u.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Assets\applicationIcon-1024.png" />
     <Resource Include="Assets\applicationIcon-256.png" />
+    <Content Include="Assets\Fonts\Poppins-Regular.ttf" />
     <Resource Include="Assets\jRXYjXNq0Cs2TcJjLkki24MLp7u.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Assets\Fonts\" />
   </ItemGroup>
 
 </Project>

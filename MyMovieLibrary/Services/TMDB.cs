@@ -48,6 +48,27 @@ namespace MyMovieLibrary.Services
             }
         }
 
+        public async Task<List<DataMovies>?> GetTrendingMoviesToday()
+        {
+            string url = "https://api.themoviedb.org/3/trending/movie/day?api_key=" + API_key;
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    string data = await response.Content.ReadAsStringAsync();
+                    var movieResponse = JsonConvert.DeserializeObject<MovieResponse>(data);
+                    movieResponse = (MovieResponse?)AdjustPath(movieResponse);
+                    return movieResponse.Results;
+                }
+                else
+                {
+                    MessageBox.Show("Error with getting data for weekly trending movies");
+                    return null;
+                }
+            }
+        }
+
         public async Task<List<DataMovies>?> GetUpcomingMovies()
         {
             string url = "https://api.themoviedb.org/3/movie/upcoming?api_key=" + API_key + "&language=en-US&page=1";

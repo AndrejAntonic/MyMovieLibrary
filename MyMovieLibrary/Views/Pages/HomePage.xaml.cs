@@ -1,4 +1,5 @@
-﻿using MyMovieLibrary.ViewModels;
+﻿using MyMovieLibrary.Services;
+using MyMovieLibrary.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,18 @@ namespace MyMovieLibrary.Views.Pages
             ViewModel = viewModel;
 
             InitializeComponent();
+        }
+
+        private void btnToday_Click(object sender, RoutedEventArgs e)
+        {
+            btnToday.Background = new SolidColorBrush(Colors.White);
+            btnThisWeek.Background = new SolidColorBrush(Colors.Gray);
+        }
+
+        private void btnThisWeek_Click(object sender, RoutedEventArgs e)
+        {
+            btnToday.Background = new SolidColorBrush(Colors.Gray);
+            btnThisWeek.Background = new SolidColorBrush(Colors.White);
         }
     }
 }
