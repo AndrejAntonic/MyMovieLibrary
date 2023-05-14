@@ -48,6 +48,27 @@ namespace MyMovieLibrary.Services
             }
         }
 
+        public async Task<List<DataMovies>?> GetUpcomingMovies()
+        {
+            string url = "https://api.themoviedb.org/3/movie/upcoming?api_key=" + API_key + "&language=en-US&page=1";
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    string data = await response.Content.ReadAsStringAsync();
+                    var movieResponse = JsonConvert.DeserializeObject<MovieResponse>(data);
+                    movieResponse = (MovieResponse?)AdjustPath(movieResponse);
+                    return movieResponse.Results;
+                }
+                else
+                {
+                    MessageBox.Show("Error with getting data for upcoming movies");
+                    return null;
+                }
+            }
+        }
+
         public async Task GetSearchMovie(string query)
         {
             string url = "https://api.themoviedb.org/3/search/movie?api_key=" + API_key + "&language=en-US&query=" + query + "&page=1&include_adult=false";

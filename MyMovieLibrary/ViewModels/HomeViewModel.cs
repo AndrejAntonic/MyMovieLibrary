@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MyMovieLibrary.Models;
 using MyMovieLibrary.Services;
+using MyMovieLibrary.Views.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,12 @@ namespace MyMovieLibrary.ViewModels
 
         [ObservableProperty]
         private IEnumerable<DataMovies> _movies;
+        [ObservableProperty]
+        private IEnumerable<DataMovies> _upcomingmovies;
 
         public void OnNavigatedFrom()
         {
+            
         }
 
         public void OnNavigatedTo()
@@ -30,12 +34,13 @@ namespace MyMovieLibrary.ViewModels
 
         private async void InitializeViewModel()
         {
-            var moviesCollection = new List<DataMovies>();
-
             var moviesTrendingWeek = await tmdb.GetTrendingMoviesWeek();
+            var moviesUpcoming = await tmdb.GetUpcomingMovies();
 
             if(moviesTrendingWeek != null)
                 Movies = moviesTrendingWeek;
+            if(moviesUpcoming != null)
+                Upcomingmovies = moviesUpcoming;
 
             _isInitialized = true;
         }
