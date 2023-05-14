@@ -20,6 +20,12 @@ namespace MyMovieLibrary.ViewModels
         private IEnumerable<DataMovies> _movies;
         [ObservableProperty]
         private IEnumerable<DataMovies> _upcomingmovies;
+        [ObservableProperty]
+        private IEnumerable<DataMovies> _popularmovies;
+        [ObservableProperty]
+        private IEnumerable<DataMovies> _nowplayingmovies;
+        [ObservableProperty]
+        private IEnumerable<DataMovies> _topratedmovies;
 
         public void OnNavigatedFrom()
         {
@@ -35,12 +41,21 @@ namespace MyMovieLibrary.ViewModels
         private async void InitializeViewModel()
         {
             var moviesTrendingWeek = await tmdb.GetTrendingMoviesWeek();
+            var moviesPopular = await tmdb.GetPopularMovies();
             var moviesUpcoming = await tmdb.GetUpcomingMovies();
+            var moviesNowPlaying = await tmdb.GetNowPlayingMovies();
+            var moviesTopRated = await tmdb.GetTopRatedMovies();
 
             if(moviesTrendingWeek != null)
                 Movies = moviesTrendingWeek;
-            if(moviesUpcoming != null)
+            if(moviesPopular != null)
+                Popularmovies = moviesPopular;
+            if (moviesUpcoming != null)
                 Upcomingmovies = moviesUpcoming;
+            if (moviesNowPlaying != null)
+                Nowplayingmovies = moviesNowPlaying;
+            if (moviesTopRated != null)
+                Topratedmovies = moviesTopRated;
 
             _isInitialized = true;
         }

@@ -33,4 +33,8 @@
     <Resource Include="Assets\jRXYjXNq0Cs2TcJjLkki24MLp7u.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Assets\Fonts\" />
+  </ItemGroup>
+
 </Project>
